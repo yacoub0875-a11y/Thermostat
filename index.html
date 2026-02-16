@@ -1,53 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Thermostat IA Premium</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Thermostat IA & Santé</h1>
-        <p>Dashboard futuriste premium</p>
+        <h1>Thermostat IA Premium</h1>
+        <p>Dashboard Santé & Énergie</p>
     </header>
 
     <main class="dashboard">
-        <!-- Cartes Health & Thermostat -->
-        <div class="card">
-            <h2>❤️ Rythme cardiaque</h2>
-            <p id="heartRate">78 bpm</p>
-            <canvas id="heartChart" width="250" height="120"></canvas>
-        </div>
-
-        <div class="card">
-            <h2>👣 Pas aujourd'hui</h2>
-            <p id="steps">4 520</p>
-            <canvas id="stepsChart" width="250" height="120"></canvas>
-        </div>
-
-        <div class="card">
-            <h2>🏃 Mouvements</h2>
-            <p id="movement">Actif</p>
-        </div>
-
-        <div class="card">
+        <!-- Carte Température -->
+        <div class="card card-temp">
             <h2>🌡 Température IA</h2>
             <p id="currentTemp">22°C</p>
             <p id="mode">Optimisé</p>
         </div>
 
-        <div class="card">
-            <h2>Prévision consommation</h2>
-            <p id="forecast">1.2 kWh</p>
+        <!-- Carte Rythme cardiaque -->
+        <div class="card card-heart">
+            <h2>❤️ Rythme cardiaque</h2>
+            <p id="heartRate">78 bpm</p>
+            <canvas id="heartChart" width="250" height="120"></canvas>
         </div>
 
-        <div class="card">
-            <h2>Suggestions IA</h2>
+        <!-- Carte Pas et mouvements -->
+        <div class="card card-steps">
+            <h2>👣 Pas aujourd'hui</h2>
+            <p id="steps">4 520</p>
+            <canvas id="stepsChart" width="250" height="120"></canvas>
+            <h3>Mouvements</h3>
+            <p id="movement">Actif</p>
+        </div>
+
+        <!-- Carte Prévisions & Suggestions IA -->
+        <div class="card card-ia">
+            <h2>Prévision consommation</h2>
+            <p id="forecast">1.2 kWh</p>
+            <h3>Suggestions IA</h3>
             <ul id="aiTips">
                 <li>Réduire chauffage à 21°C la nuit</li>
                 <li>Activer mode éco automatique</li>
@@ -58,237 +54,5 @@
     <footer>
         <p>© 2026 Thermostat IA Premium</p>
     </footer>
-=======
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thermostat Intelligent</title>
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#4CAF50">
-</head>
-<body>
-
-<div class="container">
-  <h1 id="titre">Thermostat Intelligent</h1>
-
-  <div class="dashboard">
-
-    <!-- Météo principale -->
-    <div class="dashboard-item" id="dashboard-meteo">
-      <h2>Météo actuelle</h2>
-      <div id="weatherIcon" class="weather-icon">⏳</div>
-      <p id="ville">Ville : --</p>
-      <p id="prevision">Chargement...</p>
-      <p id="temperature">Température : --°C</p>
-    </div>
-
-    <!-- Thermostat -->
-    <div class="dashboard-item" id="dashboard-thermostat">
-      <h2>Thermostat</h2>
-      <div class="circle" id="circle">
-        <div id="temp">--°C</div>
-      </div>
-      <div class="controls">
-        <button onclick="changerTemp(-1)">-</button>
-        <button onclick="changerTemp(1)">+</button>
-      </div>
-      <p>Mode : <span id="mode">Chauffage</span></p>
-      <button onclick="changerMode()" id="changerModeBtn">Changer le mode</button>
-    </div>
-
-    <!-- Historique -->
-    <div class="dashboard-item" id="dashboard-historique">
-      <h2>Historique des températures</h2>
-      <ul id="historique"></ul>
-    </div>
-
-    <!-- Informations météo détaillées -->
-    <div class="dashboard-item" id="dashboard-details">
-      <h2>Informations météo détaillées</h2>
-      <p id="vent">Vitesse du vent : -- m/s</p>
-      <p id="uv">Indice UV : --</p>
-      <p id="humidite">Humidité : -- %</p>
-      <p id="pointrose">Point de rosée : --°C</p>
-      <p id="pression">Pression : -- hPa</p>
-      <p id="visibilite">Visibilité : -- m</p>
-    </div>
-
-    <!-- Calendrier -->
-    <div class="dashboard-item" id="dashboard-calendar">
-      <h2>Calendrier</h2>
-      <input type="date" id="calendar" />
-    </div>
-
-  </div>
-</div>
-
-<script>
-const API_KEY = "636fcad3670b8d42b25ef84f9fb057f7";
-
-/* Langues */
-const translations = {
-  fr: {
-    titre: "Thermostat Intelligent",
-    meteo: "Météo actuelle",
-    thermostat: "Thermostat",
-    historique: "Historique des températures",
-    details: "Informations météo détaillées",
-    calendrier: "Calendrier",
-    vitesseVent: "Vitesse du vent",
-    indiceUV: "Indice UV",
-    humidite: "Humidité",
-    pointRose: "Point de rosée",
-    pression: "Pression",
-    visibilite: "Visibilité",
-    modeChauffage: "Chauffage",
-    modeRefroidissement: "Refroidissement",
-    changerMode: "Changer le mode"
-  },
-  en: {
-    titre: "Smart Thermostat",
-    meteo: "Current Weather",
-    thermostat: "Thermostat",
-    historique: "Temperature History",
-    details: "Detailed Weather Info",
-    calendrier: "Calendar",
-    vitesseVent: "Wind Speed",
-    indiceUV: "UV Index",
-    humidite: "Humidity",
-    pointRose: "Dew Point",
-    pression: "Pressure",
-    visibilite: "Visibility",
-    modeChauffage: "Heating",
-    modeRefroidissement: "Cooling",
-    changerMode: "Change Mode"
-  }
-  // Ajouter d’autres langues si besoin
-};
-
-const userLang = navigator.language.slice(0,2);
-const lang = translations[userLang] ? userLang : "en";
-
-function traduire() {
-  document.getElementById("titre").textContent = translations[lang].titre;
-  document.querySelector("#dashboard-meteo h2").textContent = translations[lang].meteo;
-  document.querySelector("#dashboard-thermostat h2").textContent = translations[lang].thermostat;
-  document.querySelector("#dashboard-historique h2").textContent = translations[lang].historique;
-  document.querySelector("#dashboard-details h2").textContent = translations[lang].details;
-  document.querySelector("#dashboard-calendar h2").textContent = translations[lang].calendrier;
-  document.getElementById("changerModeBtn").textContent = translations[lang].changerMode;
-}
-
-traduire();
-
-/* Thermostat */
-let temp = 22;
-let mode = translations[lang].modeChauffage;
-
-const tempEl = document.getElementById("temp");
-const circle = document.getElementById("circle");
-const historique = document.getElementById("historique");
-
-function afficherThermostat() {
-  tempEl.textContent = temp + "°C";
-  let deg = (temp - 5) * 5;
-  let color = temp <= 18 ? "#00aaff" : temp >= 26 ? "#ff4444" : "#4CAF50";
-  circle.style.background = `conic-gradient(${color} ${deg}deg, #ddd 0deg)`;
-}
-
-function changerTemp(val) {
-  temp += val;
-  afficherThermostat();
-  ajouterHistorique("Réglage manuel");
-}
-
-function changerMode() {
-  mode = mode === translations[lang].modeChauffage ? translations[lang].modeRefroidissement : translations[lang].modeChauffage;
-  document.getElementById("mode").textContent = mode;
-}
-
-function ajouterHistorique(source) {
-  const li = document.createElement("li");
-  const heure = new Date().toLocaleTimeString();
-  li.textContent = `${heure} — ${temp}°C (${source})`;
-  historique.prepend(li);
-}
-
-/* Météo + géolocalisation */
-const prevision = document.getElementById("prevision");
-const icon = document.getElementById("weatherIcon");
-const villeEl = document.getElementById("ville");
-const temperatureEl = document.getElementById("temperature");
-
-const ventEl = document.getElementById("vent");
-const uvEl = document.getElementById("uv");
-const humiditeEl = document.getElementById("humidite");
-const pointRoseEl = document.getElementById("pointrose");
-const pressionEl = document.getElementById("pression");
-const visibiliteEl = document.getElementById("visibilite");
-
-async function chargerMeteo() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      const lat = pos.coords.latitude;
-      const lon = pos.coords.longitude;
-
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=${lang}&appid=${API_KEY}`;
-      const res = await fetch(url);
-      const data = await res.json();
-
-      temp = Math.round(data.main.temp);
-      afficherThermostat();
-      ajouterHistorique("Météo");
-
-      const desc = data.weather[0].main.toLowerCase();
-      prevision.textContent = data.weather[0].description;
-      villeEl.textContent = "Ville : " + data.name;
-      temperatureEl.textContent = "Température : " + data.main.temp + "°C";
-
-      if (desc.includes("rain")) { icon.textContent="🌧️"; icon.className="weather-icon rain"; }
-      else if(desc.includes("cloud")) { icon.textContent="☁️"; icon.className="weather-icon cloud"; }
-      else { icon.textContent="☀️"; icon.className="weather-icon sun"; }
-
-      ventEl.textContent = `${translations[lang].vitesseVent} : ${data.wind.speed} m/s`;
-      humiditeEl.textContent = `${translations[lang].humidite} : ${data.main.humidity} %`;
-      pressionEl.textContent = `${translations[lang].pression} : ${data.main.pressure} hPa`;
-      visibiliteEl.textContent = `${translations[lang].visibilite} : ${data.visibility} m`;
-      const dewPoint = data.main.temp - ((100 - data.main.humidity)/5);
-      pointRoseEl.textContent = `${translations[lang].pointRose} : ${dewPoint.toFixed(1)}°C`;
-
-      // Indice UV
-      const urlUV = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
-      const resUV = await fetch(urlUV);
-      const dataUV = await resUV.json();
-      uvEl.textContent = `${translations[lang].indiceUV} : ${dataUV.value}`;
-
-      // Sauvegarder les données hors-ligne
-      localStorage.setItem("lastWeather", JSON.stringify(data));
-    }, () => {
-      // Hors-ligne : récupérer les dernières données
-      const lastData = JSON.parse(localStorage.getItem("lastWeather"));
-      if(lastData){
-        temp = Math.round(lastData.main.temp);
-        afficherThermostat();
-        villeEl.textContent = "Ville : " + lastData.name;
-        temperatureEl.textContent = "Température : " + lastData.main.temp + "°C";
-        prevision.textContent = lastData.weather[0].description;
-      }
-    });
-  }
-}
-
-/* Init */
-afficherThermostat();
-chargerMeteo();
-
-/* Service Worker */
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js")
-  .then(()=>console.log("Service Worker enregistré"))
-  .catch(err=>console.log("SW erreur",err));
-}
-</script>
-
->>>>>>> 80d7d6c83bd62f8107a3406defa2e947cd38c99b
 </body>
 </html>
